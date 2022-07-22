@@ -10,6 +10,9 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/styles.css">
 
+  <!-- Links manifest file for PWA -->
+  <link rel="manifest" href="./manifest.json">
+
   <title>Budget Tracker</title>
 </head>
 <body>
@@ -47,4 +50,16 @@
   <!-- Indexed Database file for offline functionality -->
   <script src="js/idb.js"></script>
 </body>
+
+<!-- Register the service worker for caching files for offline access -->
+<script>
+  (function () {
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("./service-worker.js")
+        .then(() => console.log("Service Worker registered successfully."))
+        .catch(error => console.log("Service Worker registration failed:", error));
+    }
+  })();
+</script>
+
 </html>
